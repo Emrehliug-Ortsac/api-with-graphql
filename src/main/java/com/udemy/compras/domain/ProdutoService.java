@@ -1,4 +1,4 @@
-package com.udemy.compras.graphql;
+package com.udemy.compras.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,22 +7,22 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class ClienteService {
+public class ProdutoService {
 
     @Autowired
-    private ClienteRepository repository;
+    ProdutoRepository repository;
 
-    public Cliente findById(Long id){
-        return repository.findById(id).orElse(null);
-    }
-
-    public List<Cliente> findAll(){
+    public List<Produto> findAll(){
         return repository.findAll();
     }
 
+    public Produto findById(Long id){
+        return repository.findById(id).orElse(null);
+    }
+
     @Transactional
-    public Cliente saveCliente(Cliente cliente){
-        return repository.save(cliente);
+    public Produto saveProduto(Produto produto){
+        return repository.save(produto);
     }
 
     @Transactional
