@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ehcache>
+<ehcache>
+
+    <diskStore path="java.io.tmpdir"></diskStore>
+
+    <defaultCache>
+        name="default"
+        maxElementsInMemory="10000"
+        maxBytesLocalHeap="100M"
+        eternal="false"
+        timeToIdleSeconds="3600"
+        timeToLiveSeconds="3600"
+        overflowToDisk="true"
+        diskPersistent="true"
+        memoryStoreEvictionPolicy="LRU"
+    </defaultCache>
+
+    <cache name="clientes">
+        maxElementsInMemory="10000"
+        maxBytesLocalHeap="100M"
+    </cache>
+
+    <cache name="comprasByCliente">
+        maxElementsInMemory="10000"
+        maxBytesLocalHeap="100M"
+    </cache>
+
+</ehcache>

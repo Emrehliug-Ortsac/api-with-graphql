@@ -11,7 +11,7 @@ input ProdutoInput{
 }
 
 extend type Query {
-    produto(id:ID):Produto!
+    produto(id:ID):Produto
     produtos:[Produto]!
 }
 

@@ -1,4 +1,4 @@
-CREATE TABLE cliente (
+create table cliente (
     id    bigint auto_increment primary key,
     email varchar(255) null,
     nome  varchar(255) null
@@ -7,7 +7,7 @@ CREATE TABLE cliente (
 create table produto(
     id    bigint auto_increment primary key,
     nome  varchar(255) null,
-    valor double not null
+    valor double       not null
 );
 
 create table compra
@@ -20,5 +20,5 @@ create table compra
     produto_id bigint       null,
     constraint FK_COMPRA_PRODUTO foreign key (produto_id) references produto (id),
     constraint FK_COMPRA_CLIENTE foreign key (cliente_id) references cliente (id)
-)
+);
 

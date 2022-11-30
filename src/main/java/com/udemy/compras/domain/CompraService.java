@@ -1,6 +1,7 @@
 package com.udemy.compras.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,8 +13,8 @@ public class CompraService {
     @Autowired
     private CompraRepository repository;
 
-    public List<Compra> findAll(){
-        return repository.findAll();
+    public List<Compra> findAll(PageRequest pageRequest){
+        return repository.findAll(pageRequest).getContent();
     }
 
     public Compra findById(Long id){
@@ -22,6 +23,9 @@ public class CompraService {
 
     @Transactional
     public Compra saveCompra(Compra compra){
+        if (compra.getQuantidade() > 100){
+            throw new RuntimeException("Não é possível fazer uma compra com mais de 100 itens");
+        }
         return repository.save(compra);
     }
 
@@ -34,4 +38,8 @@ public class CompraService {
         return false;
     }
 
+
+    public List<Compra> findAllByCliente(Cliente cliente) {
+        return repository.findAllByCliente(cliente);
+    }
 }
